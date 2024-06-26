@@ -63,3 +63,24 @@ step 1:
     set up the html strucute of this webpage
 
 
+<p>Etch-A-Sketch</p>     
+        <div class="grid-buttons">
+            <p class="gridSizeText">Grid-Size</p>
+            <button class="btn gridsize" id="small">Small</button>
+            <button class="btn gridsize" id="medium">Medium</button>
+            <button class="btn gridsize" id="medium">Large</button>
+        </div>  
+        </div class="modeButtons">
+            <p class="modeSizeText">Modes</p>
+            <button class="btn colorMode" id="small">Color Mode</button>
+            <button class="btn rainMode" id="rainbow">Rainbow Mode</button>
+            <button class="btn shading" id="darkening">Shading Mode</button>
+        </div>
+        <div class="otherButtons">
+            <button class="btn erase" id="Eraser">Eraser</button>
+            <button class="btn clear" id="Clear">Clear</button>
+            <button class="btn togGrid" id="gridLines">Toggle Grid Lines</button>
+        </div>
+        <div class="container" id="grid">
+
+        </div>
