@@ -1,0 +1,65 @@
+
+I am creating an etch a sketch web app that will be deployed on github pages 
+
+This is a project given by the odin project btw, all the code is made by me however. 
+
+
+----------------------------------------------------------------
+Goals:
+
+
+1. set up a 24x12 gird of square divs, 
+    give the user three options with 24x12 being small, 48x24 being medium, and 96x48 being large 
+
+    Put these gird squares inside a container div that I will later create but the divs should be made using JS as it will give me more progress 
+
+    set up hover effect so that the grid divs change color when my mouse passes over them. (create this effect via enviornment listener and changing the background color)
+
+2. nessescary 
+
+    color mode: when selected allows me to click an icon to change the RGB value of my pen 
+
+    have the pen motion note only be on hover but be on CLICK HOLD and HOVERING
+
+3. bonus functions
+
+    create an effect that randomizes the squares RGB value with each interation 
+
+    implement a progressive darkening effect function where each intereaction darkens the square by 10%
+
+    create an eraser that erases over those squares when hovered ( return it back to the white canvas)
+
+
+
+the design of the website: 
+
+    lets make this like an actually etch-a-sketch from toy story lol 
+
+    header will be at the top within the red border surronding the page. 
+    and probably like a pastel color to fill the rest of the page 
+
+    the grid boxes would be white 
+
+    footer will be at the bottom of the page (duh)
+
+    grid density options will come first. 
+
+
+    color mode (will be double click to change color), random/rainbow mode, darkening effect will all be the bottom next to mode
+
+    eraser, clear board, and toggle gird will be at the very bottom 
+
+
+color palette: 
+
+    red: e5383b
+    yellow: ffba08
+    beige(to make the red pop): f9dcc4 (might change later)
+
+    font: @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+step 1: 
+
+    set up the html strucute of this webpage
+
+
