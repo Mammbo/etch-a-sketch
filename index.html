@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="etch-a-sketch.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Etch-A-Sketch</title>
 </head>
 <body>
@@ -16,11 +17,24 @@
     <header class="header"><p class="headerText">Etch-A-Sketch </p>
     </header>
     <div class="bottom">
-
+        <div class="container">
+                <p class="gridSizeText">Grid-Size</p>
+                <button class="btn gridsize" id="small">Small</button>
+                <button class="btn gridsize" id="medium">Medium</button>
+                <button class="btn gridsize" id="medium">Large</button>
+                <p class="modeSizeText">Modes</p>
+                <button class="btn colorMode" id="small">Color Mode</button>
+                <button class="btn rainMode" id="rainbow">Rainbow Mode</button>
+                <button class="btn shading" id="darkening">Shading Mode</button>
+                <p class="other">Ecetera</p>
+                <button class="btn erase" id="Eraser">Eraser</button>
+                <button class="btn clear" id="Clear">Clear</button>
+                <button class="btn togGrid" id="gridLines">Toggle Grid Lines</button>
+        </div>
     </div>
-    <footer>
+    <footer class="footer">
         <p>Copyright © 2024 Mammbo</p>
-        <a href="https://github.com/Mammbo/rock-paper-scissors" target="_blank">
+        <a href="https://github.com/Mammbo/etch-a-sketch" target="_blank">
             <i class="fab fa-github" aria-hidden="true"></i>
         </a>
     </footer>
