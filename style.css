@@ -22,20 +22,26 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1000px;
-    height: 700px;
+    height: 600px;
     background-color: white;
     display: flex;
     justify-content: center;
     border-left: 100px solid #e5383b;
     border-right: 100px solid #e5383b;
+
+    margin-top: 100px;
 }
 
 
 
 .screen { 
-    display: grid;
     width: 1000px;
-    height: 700px;
+    height: 570px;
+}
+
+.drawingArea {
+    height: 570px;
+    display: grid;
 }
 .header {
     display: flex;
@@ -43,10 +49,10 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 10%;
+    top: -10%;
     background-color: #e5383b;
     width: 1200px;
-    height: 160px;
+    height: 125px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -65,7 +71,7 @@ body {
         position: absolute;
         transform: translate(-50%, 50%);
         left: 50%;
-        bottom: 10%;
+        bottom: -25%;
         background-color: #e5383b;
         width: 1200px;
         height: 160px;
@@ -77,11 +83,11 @@ body {
 
 footer { 
   gap: 10px;
-  margin-top: auto;
   align-self: center;
   font-size: 30px;
   display: flex;
   align-items: center;
+  margin-top: 1050px;
 }
 
 .fab {
