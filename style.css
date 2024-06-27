@@ -101,8 +101,21 @@ footer {
 
 .btn {
     width: 110px;
-    height: 35px;
-
+    height: 40px;
+    border-radius: 10px;
+    border-color: #ffba08;
+    background-color: #f5ebe0;
+    border-width: 3px;
+    color: #ae2012;
+}
+.btn:hover {
+    min-width: 110px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #E0A100;
+    background-color: #C2B7AC;
+    border-width: 3px;
+    color: #ae2012;
 }
 
 .container { 
