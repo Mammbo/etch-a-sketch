@@ -42,6 +42,8 @@ body {
 .drawingArea {
     height: 570px;
     display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(12, 1fr);
 }
 .header {
     display: flex;
@@ -122,6 +124,7 @@ footer {
     background-color: #C2B7AC;
     border-width: 3px;
     color: #ae2012;
+    cursor: pointer;
 }
 
 .container { 
