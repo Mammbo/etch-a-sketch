@@ -10,9 +10,7 @@
 </head>
 <body>
     <div class="etch-a-sketch">
-        <div class="screen">
-             <div id="drawingArea"></div> 
-        </div>
+         <div id="drawingArea"></div> 
         <header class="header"><p class="headerText">Etch-A-Sketch </p>
         </header>
         <div class="bottom">
@@ -23,8 +21,8 @@
                 <button class="btn gridsize" id="large">Large</button>
                 <p class="modeSizeText">Modes</p>
                 <button class="btn colorMode" id="default">Color Mode</button>
-                <button class="btn rainMode" id="rainbow">Rainbow Mode</button>
-                <button class="btn shading" id="darkening">Shading Mode</button>
+                <button class="btn rainbowMode" id="rainbow">Rainbow Mode</button>
+                <button class="btn shadingMode" id="darkening">Shading Mode</button>
                 <p class="other">Ecetera</p>
                 <button class="btn erase" id="Eraser">Eraser</button>
                 <button class="btn clear" id="Clear">Clear</button>
@@ -33,7 +31,10 @@
         </div>
     </div> 
     <footer class="footer">
-        <p>Copyright © 2024 Mammbo</p>
+        <p>Copyright © 
+            <script>
+                document.write(new Date().  getFullYear())
+            </script> Mammbo</p>
         <a href="https://github.com/Mammbo/etch-a-sketch" target="_blank">
             <i class="fab fa-github" aria-hidden="true"></i>
         </a>

@@ -39,11 +39,17 @@ body {
     height: 570px;
 }
 
-.drawingArea {
-    height: 570px;
+#drawingArea {
     display: grid;
+    height: 570px;
+    width: 1000px;
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(12, 1fr);
+}
+
+.grid_item {
+  border: 1px solid #ccc;
+  background-color: white;
 }
 .header {
     display: flex;
@@ -153,4 +159,34 @@ footer {
     justify-self: end;
     padding-right: 10px;
     color: #ffba08
+}
+
+.colorMode.active {
+    min-width: 110px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #E0A100;
+    background-color: #C2B7AC;
+    border-width: 3px;
+    color: #ae2012;
+}
+
+.rainbowMode.active {
+    min-width: 110px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #E0A100;
+    background-color: #C2B7AC;
+    border-width: 3px;
+    color: #ae2012;
+}
+
+.shadingMode.active { 
+    min-width: 110px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #E0A100;
+    background-color: #C2B7AC;
+    border-width: 3px;
+    color: #ae2012;
 }
