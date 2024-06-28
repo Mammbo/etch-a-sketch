@@ -170,14 +170,35 @@ function changeColor(e) {
         let b = Math.floor(Math.random() * 256)
         e.target.style.backgroundColor = `rgb(${r} ${g} ${b})`;
     } else if (currentMode === 'shading') {
+        let opacity = 0;
         //still needs to be finished
-        opacity = 1
-        for (i = 0; i < 10;  i++)
-            opacity -= 0.1
-            e.target.style.opacity = opacity 
-    }
-        
+        if (opacity < 1) {
+            opacity += 0.1;
+
+            let rgb = getRGB(currentColor);
+            e.target.style.backgroundColor = `rgba(${rgb.r},${rgb.g},${rgb.b},${opacity}`;
+        }
+    }    
 }
+
+// hex to rgb 
+function getRGB(hexVal) {
+    //convert string to an array 
+    //extract each r, g, b values sepeartel.
+    // while extracting, we need to convert them to hex and then store it inside out output object
+    //
+    let hexCode = hexVal.split('');
+    hexCode.splice(0, 1);
+    let red = hexCode.splice(0, 2).join('');
+    let green = hexCode.splice(0, 2).join('');
+    let blue = hexCode.splice(0, 2).join('');
+    return ({
+        r: parseInt(`${red}`, 16),
+        g: parseInt(`${green}`, 16),
+        b: parseInt(`${blue}`, 16)
+    })
+}   
+
 
 
 /* quixk notes 
