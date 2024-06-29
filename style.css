@@ -155,15 +155,31 @@ footer {
     padding-right: 10px;
     color: #ffba08;
 }
-#colorPicker {
-    display: flex;
-    flex-direction: column;
-    
-    align-self: center;
-    width: 80px;
-    height: 80px;
+
+#colorPicker { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
     border: none;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+
 }
+
+#colorPicker::-webkit-color-swatch {
+    border-radius: 50%;
+    border: 7px solid 
+}
+
+#colorPicker::-moz-color-swatch {
+    border-radius: 50%;
+    border: 7px solid
+}
+
 
 .other {
     justify-self: end;
@@ -201,7 +217,7 @@ footer {
     color: #ae2012;
 }
 
-.eraser.active { 
+.erase.active { 
     min-width: 110px;
     height: 40px;
     border-radius: 10px;

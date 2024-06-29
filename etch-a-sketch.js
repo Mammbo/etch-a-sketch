@@ -1,5 +1,4 @@
 // variables
-
 let toggle = false;
 const DEFAULT_COLOR = '#333333'
 const DEFAULT_MODE = 'color'
@@ -15,7 +14,7 @@ const smallGrid = document.getElementById("small")
 const mediumGrid = document.getElementById("medium")
 const largeGrid = document.getElementById("large")
 const colorMode = document.getElementById("default")
-const colorPicker = document.getElementById("")
+const colorPicker = document.getElementById("colorPicker")
 const rainbowMode = document.getElementById("rainbow")
 const shadingMode = document.getElementById("darkening")
 const eraser = document.getElementById("Eraser")
@@ -47,21 +46,6 @@ togGrid.addEventListener("click", () => toggleGrid('click'));
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
-
-// load this up as default when the program runs 
-//FIGURE OUT HOW TO DO THIS TOMORROW 
-function defaultEtch() {
-        drawingArea.innerHTML = "";
-        drawingArea.style.gridTemplateRows = `repeat(12, 1fr)`;
-        drawingArea.style.gridTemplateColumns = `repeat(24, 1fr)`;
-        for (let i = 0; i < 24 * 12; i++ ) {
-            const gridItem = document.createElement('div');
-            gridItem.classList.add('grid-item');
-            drawingArea.appendChild(gridItem);
-
-    }
-}
-
 // functions for button logic 
 
 function gridSize(gridSize) {
@@ -117,8 +101,9 @@ function activateButton(newMode) {
         shadingMode.classList.remove('active')
       } else if (currentMode === 'eraser') {
         eraser.classList.remove('active')
-    
-      if (newMode === 'rainbow') {
+      }
+      
+    if (newMode === 'rainbow') {
         rainbowMode.classList.add('active')
       } else if (newMode === 'color') {
         colorMode.classList.add('active')
@@ -127,8 +112,8 @@ function activateButton(newMode) {
       } else if (newMode === 'eraser') {
         eraser.classList.add('active')
       }
-    }
 }
+
 
 //set mode
 function setCurrentMode(newMode) {
@@ -156,6 +141,7 @@ function toggleGrid() {
 
 function clearBoard() {
     drawingArea.innerHTML = "";
+    initializesProgram()
 }
 //coloring functions 
 
@@ -185,7 +171,7 @@ function changeMode(e) {
 // hex to rgb 
 function getRGB(hexVal) {
     //convert string to an array 
-    //extract each r, g, b values sepeartel.
+    //extract each r, g, b values sepeartly.
     // while extracting, we need to convert them to hex and then store it inside out output object
     //
     let hexCode = hexVal.split('');
@@ -200,7 +186,29 @@ function getRGB(hexVal) {
     })
 }   
 
+// initializes program
+
+function initializesProgram() {
+    drawingArea.innerHTML = "";
+    drawingArea.style.gridTemplateRows = `repeat(12, 1fr)`;
+    drawingArea.style.gridTemplateColumns = `repeat(24, 1fr)`;
+    for (let i = 0; i < 24 * 12; i++ ) {
+        const gridItem = document.createElement('div');
+        gridItem.classList.add('grid_item');
+        gridItem.style.border = toggle ? '0px' : '1px';
+        gridItem.addEventListener('mouseover', changeMode)
+        gridItem.addEventListener('mousedown', changeMode)
+        drawingArea.appendChild(gridItem);
+
+    setCurrentMode(DEFAULT_MODE)
+    }
+}
+window.onload = () => {
+    initializesProgram()
+    }
 
 
 /* quixk notes 
     MAKE SURE THE DEFAULT VALUES WHEN THE PROGRAM LOADS UP IS GRID SMALL< GRID TOGGLED, AND PEN SELECTED BLACK */
+
+
