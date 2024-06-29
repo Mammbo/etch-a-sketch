@@ -15,6 +15,7 @@ const smallGrid = document.getElementById("small")
 const mediumGrid = document.getElementById("medium")
 const largeGrid = document.getElementById("large")
 const colorMode = document.getElementById("default")
+const colorPicker = document.getElementById("")
 const rainbowMode = document.getElementById("rainbow")
 const shadingMode = document.getElementById("darkening")
 const eraser = document.getElementById("Eraser")
@@ -35,15 +36,12 @@ rainbowMode.addEventListener("click", () => setCurrentMode('rainbow'))
 shadingMode.addEventListener("click", () => setCurrentMode('shading'))
 eraser.addEventListener("click", () => setCurrentMode("eraser"))
 //add colorpicker later
-
+colorPicker.oninput = (e) => setCurrentColor(e.target.value)
 //clear listener
 clear.addEventListener("click", () => clearBoard())
 
 //grid lines 
-
 togGrid.addEventListener("click", () => toggleGrid('click'));
-
-
 // tracking mouse clicks 
 
 let mouseDown = false
@@ -140,7 +138,7 @@ function setCurrentMode(newMode) {
 
 // set color
 function setCurrentColor(newColor) {
-
+    currentColor = newColor
 }
 function toggleGrid() {
     const gridItem = document.querySelectorAll('.grid_item')
