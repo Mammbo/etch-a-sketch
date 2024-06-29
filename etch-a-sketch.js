@@ -1,5 +1,6 @@
-// variables
+// global variables
 let toggle = false;
+
 const DEFAULT_COLOR = '#333333'
 const DEFAULT_MODE = 'color'
 const DEFAULT_COLUMS = 12
@@ -34,26 +35,35 @@ colorMode.addEventListener("click", () => setCurrentMode('color'))
 rainbowMode.addEventListener("click", () => setCurrentMode('rainbow'))
 shadingMode.addEventListener("click", () => setCurrentMode('shading'))
 eraser.addEventListener("click", () => setCurrentMode("eraser"))
-//add colorpicker later
+
+//colorPicker
 colorPicker.oninput = (e) => setCurrentColor(e.target.value)
+
 //clear listener
 clear.addEventListener("click", () => clearBoard())
 
 //grid lines 
 togGrid.addEventListener("click", () => toggleGrid('click'));
-// tracking mouse clicks 
 
+// tracking mouse clicks for toggle
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
-// functions for button logic 
+
+//----------------------------------------------------------//
+// FUNCTIONS FOR BUTTON LOGIC 
+
+//
 
 function gridSize(gridSize) {
+    //this gridSize comes in three different sizes: small, medium, and large and is basically repeat code.
     const drawingArea = document.getElementById("drawingArea")
     if (gridSize === 'small') {
+        //clears html and adds the template grid
         drawingArea.innerHTML = "";
         drawingArea.style.gridTemplateRows = `repeat(12, 1fr)`;
         drawingArea.style.gridTemplateColumns = `repeat(24, 1fr)`;
+        //add divs to the grid and listners and border toggle so every box can be tracked 
         for (let i = 0; i < 24 * 12; i++ ) {
             const gridItem = document.createElement('div');
             gridItem.classList.add('grid_item');
@@ -92,7 +102,10 @@ function gridSize(gridSize) {
 
 
 // mode selection function and mode functions 
+
+//Shows which option you have selected (darkens the background)
 function activateButton(newMode) {
+    //removes and adds active so the css element that has been created can be turned off and on based on if the active class is there or not
     if (currentMode === 'rainbow') {
         rainbowMode.classList.remove('active')
       } else if (currentMode === 'color') {
@@ -102,7 +115,7 @@ function activateButton(newMode) {
       } else if (currentMode === 'eraser') {
         eraser.classList.remove('active')
       }
-      
+
     if (newMode === 'rainbow') {
         rainbowMode.classList.add('active')
       } else if (newMode === 'color') {
@@ -116,15 +129,18 @@ function activateButton(newMode) {
 
 
 //set mode
+//changes the global variable
 function setCurrentMode(newMode) {
     activateButton(newMode)
     currentMode = newMode
 }
 
 // set color
+//changes the global variable
 function setCurrentColor(newColor) {
     currentColor = newColor
 }
+//turns the grid on and off based on your click input for each grid_item
 function toggleGrid() {
     const gridItem = document.querySelectorAll('.grid_item')
         gridItem.forEach(element => {
@@ -138,23 +154,29 @@ function toggleGrid() {
     }
 
 //clear board 
-
 function clearBoard() {
     drawingArea.innerHTML = "";
     initializesProgram()
 }
 //coloring functions 
-
 function changeMode(e) {
+    //doesnt color unless both conditons are met 
     if (e.type === 'mouseover' &&  !mouseDown ) return 
 
+    //checks for mode and then colors it based of the rgb value you selected from color picker
     if (currentMode === 'color') {
         e.target.style.backgroundColor = currentColor
+        //randomizes the color ouput for the rgb to get random mess lol 
     } else if (currentMode === 'rainbow') {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
         let b = Math.floor(Math.random() * 256)
         e.target.style.backgroundColor = `rgb(${r} ${g} ${b})`;
+        //parses for the targets opacity, if none it sets it to 0 after that it checks if the opacity is less than one, if so it incremenets the target by 0.1, 
+
+        //after that it checks if the opacity is over 1, if so, it makes sure it equals 1
+
+        //runs the getRGB function and stylizes based off the rgb, alpha values you selected in the color picker
     } else if (currentMode === 'shading') {
         let opacity = parseFloat(e.target.getAttribute('data-opacity')) || 0;
         if (opacity < 1) {
@@ -164,16 +186,14 @@ function changeMode(e) {
             let rgb = getRGB(currentColor);
             e.target.style.backgroundColor = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
         }
+        // sets your color to white 
     } else if (currentMode === 'eraser')
         e.target.style.backgroundColor = 'white';
 }
 
 // hex to rgb 
 function getRGB(hexVal) {
-    //convert string to an array 
-    //extract each r, g, b values sepeartly.
-    // while extracting, we need to convert them to hex and then store it inside out output object
-    //
+   //converts string to areas, splices out the #, and the splice and join every 2 values to get the r, g, b values. after that we parse for an Int and return the output.
     let hexCode = hexVal.split('');
     hexCode.splice(0, 1);
     let red = hexCode.splice(0, 2).join('');
@@ -187,7 +207,6 @@ function getRGB(hexVal) {
 }   
 
 // initializes program
-
 function initializesProgram() {
     drawingArea.innerHTML = "";
     drawingArea.style.gridTemplateRows = `repeat(12, 1fr)`;
@@ -203,12 +222,8 @@ function initializesProgram() {
     setCurrentMode(DEFAULT_MODE)
     }
 }
+
+//runs intialize program when the webpage is accessed
 window.onload = () => {
     initializesProgram()
     }
-
-
-/* quixk notes 
-    MAKE SURE THE DEFAULT VALUES WHEN THE PROGRAM LOADS UP IS GRID SMALL< GRID TOGGLED, AND PEN SELECTED BLACK */
-
-
