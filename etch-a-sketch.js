@@ -20,7 +20,7 @@ const shadingMode = document.getElementById("darkening")
 const eraser = document.getElementById("Eraser")
 const clear = document.getElementById("Clear")
 const togGrid = document.getElementById("gridLines")
-const drawingArea = document.getElementsByClassName("drawingArea")
+const drawingArea = document.getElementById("drawingArea")
 
 // environment listeners for buttons 
 
@@ -34,12 +34,10 @@ colorMode.addEventListener("click", () => setCurrentMode('color'))
 rainbowMode.addEventListener("click", () => setCurrentMode('rainbow'))
 shadingMode.addEventListener("click", () => setCurrentMode('shading'))
 eraser.addEventListener("click", () => setCurrentMode("eraser"))
-
-
 //add colorpicker later
 
 //clear listener
-clear.addEventListener("click", () => eraseOption("clearBoard"))
+clear.addEventListener("click", () => clearBoard())
 
 //grid lines 
 
@@ -119,7 +117,8 @@ function activateButton(newMode) {
         colorMode.classList.remove('active')
       } else if (currentMode === 'shading') {
         shadingMode.classList.remove('active')
-      }
+      } else if (currentMode === 'eraser') {
+        eraser.classList.remove('active')
     
       if (newMode === 'rainbow') {
         rainbowMode.classList.add('active')
@@ -127,8 +126,11 @@ function activateButton(newMode) {
         colorMode.classList.add('active')
       } else if (newMode === 'shading') {
         shadingMode.classList.add('active')
+      } else if (newMode === 'eraser') {
+        eraser.classList.add('active')
       }
     }
+}
 
 //set mode
 function setCurrentMode(newMode) {
@@ -151,6 +153,12 @@ function toggleGrid() {
         });
         toggle = !toggle;
     }
+
+//clear board 
+
+function clearBoard() {
+    drawingArea.innerHTML = "";
+}
 //coloring functions 
 
 function changeMode(e) {

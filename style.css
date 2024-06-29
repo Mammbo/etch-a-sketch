@@ -191,3 +191,13 @@ footer {
     border-width: 3px;
     color: #ae2012;
 }
+
+.eraser.active { 
+    min-width: 110px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #E0A100;
+    background-color: #C2B7AC;
+    border-width: 3px;
+    color: #ae2012;
+}
