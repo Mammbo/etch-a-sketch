@@ -1,15 +1,13 @@
 // variables
 
 let toggle = false;
-
-
 const DEFAULT_COLOR = '#333333'
 const DEFAULT_MODE = 'color'
-const DEFAULT_SIZE = 16
+const DEFAULT_COLUMS = 12
+const DEFAULT_ROWS = 24
 
 let currentColor = DEFAULT_COLOR
 let currentMode = DEFAULT_MODE
-let currentSize = DEFAULT_SIZE
 
 // UI elements 
 
@@ -35,13 +33,12 @@ largeGrid.addEventListener("click", () => gridSize('large'))
 colorMode.addEventListener("click", () => setCurrentMode('color'))
 rainbowMode.addEventListener("click", () => setCurrentMode('rainbow'))
 shadingMode.addEventListener("click", () => setCurrentMode('shading'))
+eraser.addEventListener("click", () => setCurrentMode("eraser"))
 
 
 //add colorpicker later
 
-//erase and grid selections 
-
-eraser.addEventListener("click", () => eraseOption("eraser"))
+//clear listener
 clear.addEventListener("click", () => eraseOption("clearBoard"))
 
 //grid lines 
@@ -81,8 +78,8 @@ function gridSize(gridSize) {
             const gridItem = document.createElement('div');
             gridItem.classList.add('grid_item');
             gridItem.style.border = toggle ? '0px' : '1px';
-            gridItem.addEventListener('mouseover', changeColor)
-            gridItem.addEventListener('mousedown', changeColor)
+            gridItem.addEventListener('mouseover', changeMode)
+            gridItem.addEventListener('mousedown', changeMode)
             drawingArea.appendChild(gridItem);
         }
     } else if (gridSize === 'medium') {
@@ -93,8 +90,8 @@ function gridSize(gridSize) {
             const gridItem = document.createElement('div');
             gridItem.classList.add('grid_item');
             gridItem.style.border = toggle ? '0px' : '1px';
-            gridItem.addEventListener('mouseover', changeColor)
-            gridItem.addEventListener('mousedown', changeColor)
+            gridItem.addEventListener('mouseover', changeMode)
+            gridItem.addEventListener('mousedown', changeMode)
             drawingArea.appendChild(gridItem);
 
         }
@@ -106,8 +103,8 @@ function gridSize(gridSize) {
             const gridItem = document.createElement('div');
             gridItem.classList.add('grid_item');
             gridItem.style.border = toggle ? '0px' : '1px';
-            gridItem.addEventListener('mouseover', changeColor)
-            gridItem.addEventListener('mousedown', changeColor)
+            gridItem.addEventListener('mouseover', changeMode)
+            gridItem.addEventListener('mousedown', changeMode)
             drawingArea.appendChild(gridItem);
         }
     }
@@ -140,9 +137,9 @@ function setCurrentMode(newMode) {
 }
 
 // set color
+function setCurrentColor(newColor) {
 
-
-
+}
 function toggleGrid() {
     const gridItem = document.querySelectorAll('.grid_item')
         gridItem.forEach(element => {
@@ -154,12 +151,9 @@ function toggleGrid() {
         });
         toggle = !toggle;
     }
-
-
-
 //coloring functions 
 
-function changeColor(e) {
+function changeMode(e) {
     if (e.type === 'mouseover' &&  !mouseDown ) return 
 
     if (currentMode === 'color') {
@@ -170,15 +164,16 @@ function changeColor(e) {
         let b = Math.floor(Math.random() * 256)
         e.target.style.backgroundColor = `rgb(${r} ${g} ${b})`;
     } else if (currentMode === 'shading') {
-        let opacity = 0;
-        //still needs to be finished
+        let opacity = parseFloat(e.target.getAttribute('data-opacity')) || 0;
         if (opacity < 1) {
             opacity += 0.1;
-
+            if (opacity > 1) opacity = 1;
+            e.target.setAttribute('data-opacity', opacity);
             let rgb = getRGB(currentColor);
-            e.target.style.backgroundColor = `rgba(${rgb.r},${rgb.g},${rgb.b},${opacity}`;
+            e.target.style.backgroundColor = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
         }
-    }    
+    } else if (currentMode === 'eraser')
+        e.target.style.backgroundColor = 'white';
 }
 
 // hex to rgb 

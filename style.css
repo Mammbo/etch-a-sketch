@@ -50,6 +50,7 @@ body {
 .grid_item {
   border: 1px solid #ccc;
   background-color: white;
+  opacity: 1
 }
 .header {
     display: flex;
